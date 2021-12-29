@@ -26,13 +26,27 @@
 				PubPacket.TopicName.Ptr="developers/Name/Gad";
 
 
-				offeset=MQTT_Connect(buf, &ConnPacket);
-				offeset+=MQTT_Publish(buf+offeset, &PubPacket, payload , sizeof(payload)-1);
+				offeset = MQTT_Connect(buf, &ConnPacket);
+				offeset += MQTT_Publish(buf+offeset, &PubPacket, payload , sizeof(payload)-1);
 
 				/* add your code to send the buf and the length of bytes to send over TCP connection
 				 * Example:
+				 * now you send a connection request packet then send a puplish packet
 				 * TCP_SEND_DATA(buf, offeset);
 				 */
+
+
+				/* to send the connection packet first only do that */
+
+				/* offeset=MQTT_Connect(buf, &ConnPacket); 
+				 * TCP_SEND_DATA(buf, offeset);
+				 */
+
+				 /* wait for connection request to be accepted then send the publish packet */
+
+				 /* offeset = MQTT_Publish(buf+offeset, &PubPacket, payload , sizeof(payload)-1);
+				  * TCP_SEND_DATA(buf, offeset);
+				  */
 
 
 
